@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Learn React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      .counter {
+        margin: 2rem;
+      }
+      .counter span {
+        margin: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+
+      function Header({ author }) {
+        return <h1>Learn React with {author ? author : "WPU"} 🚀</h1>;
+      }
+
+      function MyButton({ text, onClick, counter }) {
+        const myStyle =
+          text !== "Reset" ? {} : { margin: 20, display: "block" };
+
+        if (text == "Reset") {
+          if (counter < 0 || counter > 10) {
+            return (
+              <button onClick={onClick} style={myStyle}>
+                {text}
+              </button>
+            );
+          } else {
+            return (
+              <button onClick={onClick} style={myStyle} disabled>
+                {text}
+              </button>
+            );
+          }
+        }
+
+        if (text == "-") {
+          if (counter < 0) {
+            return (
+              <button onClick={onClick} style={myStyle} disabled>
+                {text}
+              </button>
+            );
+          } else {
+            return (
+              <button onClick={onClick} style={myStyle}>
+                {text}
+              </button>
+            );
+          }
+        }
+
+        if (text == "+") {
+          if (counter > 10) {
+            return (
+              <button onClick={onClick} style={myStyle} disabled>
+                {text}
+              </button>
+            );
+          } else {
+            return (
+              <button onClick={onClick} style={myStyle}>
+                {text}
+              </button>
+            );
+          }
+        }
+      }
+
+      function MyCounter({ counter }) {
+        const myText = counter > 10 || counter < 0 ? "Done!" : counter;
+
+        return <span>{myText}</span>;
+      }
+
+      function HomePage() {
+        const mahasiswa = ["Mahasiswa 1", "Mahasiswa 2", "Mahasiswa 3"];
+        const [likes, setLikes] = React.useState(0);
+        const [counter, setCounter] = React.useState(0);
+
+        function handleClick() {
+          setLikes(likes + 1);
+        }
+
+        function increment() {
+          setCounter(counter + 1);
+        }
+
+        function decrement() {
+          setCounter(counter - 1);
+        }
+
+        function reset() {
+          setCounter(0);
+        }
+
+        return (
+          <>
+            <Header />
+            <Header author="Web Programming Unpas" />
+
+            <ul>
+              {mahasiswa.map((mhs) => (
+                <li key={mhs}>{mhs}</li>
+              ))}
+            </ul>
+            <button onClick={handleClick}>Like ({likes})</button>
+
+            <div className="counter">
+              <MyButton text={"-"} onClick={decrement} counter={counter} />
+              <MyCounter counter={counter} />
+              <MyButton text={"+"} onClick={increment} counter={counter} />
+              <MyButton text={"Reset"} onClick={reset} counter={counter} />
+            </div>
+          </>
+        );
+      }
+
+      root.render(<HomePage />);
+    </script>
+  </body>
+</html>
