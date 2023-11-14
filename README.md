@@ -205,6 +205,32 @@ Bagaimana browser menginterpretasi code kita untuk menghasilkan UI yang interakt
       ```javascript
       <button onClick={handleClick}>Like ({likes})</button>
       ```
+
+## Component
+
+- **Aplikasi React** terbuat dari komponen-komponen
+- Komponen pada React pada dasarnya adalah **function pada javascript**
+- Komponen adalah **bagian dari UI** yang memiliki **logika** dan **tampilan** sendiri
+- Bisa **sekecil** tombol atau **sebesar** seluruh halaman
+
+### Tips membuat component
+
+- Pisahkan UI secara logis antara **content** dan **layout**
+- Pikirkan **reusability**
+- Perhatikan **kompleksitas**
+- Gaya / kebiasaan **coding**
+- Mulai dari **komponen besar** lalu **pecah**
+
+### Pertanyaan
+
+- Apakah di dalam komponen terdapat 'bagian' konten atau layout yang bisa dipisahkan?
+- Apaakah mungkin untuk digunakan kembali?
+- Apakah komponen melakukan terlalu banyak hal?
+- Apakah terlalu bergantung pada banyak props?
+- Apakah JSX nya jadi terlalu kompleks?
+
+Jika jawabannya iya maka kemungkinan **butuh komponen baru**
+
 ## Next?
 
 - Bagaimana React bekerja
