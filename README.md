@@ -269,6 +269,35 @@ Jika jawabannya iya maka kemungkinan **butuh komponen baru**
 
 > mengatasi prop drilling bisa menggunakan **Lifting State Up**
 
+```javascript
+function Modal({children}) {
+  return (
+    <div className="modal">
+      {children}
+    </div>
+  )
+}
+```
+
+```javascript
+function Success() {
+  return (
+    <div className="modal-body">
+      <p>Success</p>
+    </div>
+  )
+}
+```
+```javascript
+export default function App() {
+  return (
+    <Modal>
+      <Success />
+    </Modal>
+  )
+}
+```
+
 ## Next?
 
 - Bagaimana React bekerja
